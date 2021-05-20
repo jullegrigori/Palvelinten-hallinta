@@ -1,7 +1,7 @@
 b) Oma moduli (iso tehtävä). Ratkaise jokin oikean elämän tai keksitty tarve omilla tiloilla/moduleilla. Voit käyttää Salttia tai muuta valitsemaasi
 modernia keskitetyn hallinnan ohjelmaa. Esitä tulos viimeisellä opetuskerralla, 5-10 min. Live demo olisi kiva.
 
-##HomeAssistant-raspin hallinta##
+## HomeAssistant-raspin hallinta ##
 Tarkoitus on luoda hallintamahdollisuus kotona olevaan raspi-debianiin (ja vanhemmilla). Tulevaisuudessa tarkoitus lisätä mm. config-tiedostojen backup ja palautus.
 
 Aluksi loin ssh-konfigurointitiedoston minionilla, jossa ssh konfiguroitu porttiin 9777 ja kopioin sen masterille:
@@ -26,7 +26,7 @@ Port 9777
 
 ...
 
-
+```
 
 
 Sitten Home Assistantin dokumentaation mukaiset esivaatimukset asentumaan ja mm. ufw, git ja tree. Sitten ufw:lle portti auki ja äsken luotu ssh-konffitiedosto minionille.
@@ -64,11 +64,6 @@ cmd.run:
     - source: salt://ssh/sshd_config
 
 ```
-```
-openssh-server:
-  pkg.installed
-
-
 
 
 
@@ -78,11 +73,12 @@ ssh -p 9777 gri@XX.XX.XX.XX
 Dockerin asennus onnistuu esim näin:
 sudo curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
 
-Tämän voi toteuttaa komennon ajamisella.
+
+(JATKUU)
 
 
 
-##Lähteet##
+## Lähteet ##
 
 https://terokarvinen.com/2021/configuration-management-systems-palvelinten-hallinta-ict4tn022-spring-2021/
 
