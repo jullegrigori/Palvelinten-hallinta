@@ -1,9 +1,13 @@
 b) Oma moduli (iso tehtävä). Ratkaise jokin oikean elämän tai keksitty tarve omilla tiloilla/moduleilla. Voit käyttää Salttia tai muuta valitsemaasi
 modernia keskitetyn hallinnan ohjelmaa. Esitä tulos viimeisellä opetuskerralla, 5-10 min. Live demo olisi kiva.
 
-HomeAssistant-raspin etähallinta kotona, vanhemmilla ja uudelleenasennustilanteissa
+##HomeAssistant-raspin hallinta##
+Tarkoitus on luoda hallintamahdollisuus kotona olevaan raspi-debianiin (ja vanhemmilla). Tulevaisuudessa tarkoitus lisätä mm. config-tiedostojen backup ja palautus.
+
+Aluksi pitää asentaa Home Assistantin dokumentaation mukaiset 
 
 ```
+Masterilla:
 /srv/salt/homeassistant$ sudoedit apps.sls
 
 apps:
@@ -23,21 +27,16 @@ apps:
       - ca-certificates
       - socat
       - software-properties-common
+      - ufw
+      
+'ufw allow 9777/tcp':
+cmd.run:
+    - unless: "sudo ufw status verbose|grep '^9777/tcp '"
 ```
 
-Ajatuksena on tehdä oma 
+
+SSH-yhteyden muodostaminen onnistuu nyt näin:
+ssh -p 9777 gri@XX.XX.XX.XX
 
 
 
-
-Raportoi modulisi tarkoitus, koodi ja testit.
-
-Hovimestari on syyllinen! Eli heti aluksi pitäisi selvitä, mitä hyötyä jutustasi on. Ja mikä se on!
-
-Esitys on hyvä aloittaa lopputuloksesta ja hyödyistä
-Työn weppisivulle taitoksen yläpuolelle (skrollaamatta näkyvään osaan) ainakin
-Ruutukaappaus
-Lisenssi
-Yhden rivin selitys - mikä tämä on
-(teknisissä ratkaisuissa, kuten tämä) Parilla sanalla, miten tämä on tehty
-Näillä houkuttelet kävijät lukemaan ja asentamaan koko jutun
